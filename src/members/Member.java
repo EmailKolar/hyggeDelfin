@@ -3,48 +3,70 @@ package members;
 import java.util.ArrayList;
 
 public class Member {
-    private int age;
-    private boolean isJunior = false;
-    private String name;
+    private int birthYear;
+    private String fName;
+    private String lName;
+    private String discipline;
+    private double personalRecord;
+    private String membershipStatus;
 
-    private boolean isContestSwimmer;
-    public boolean isPassive;
 
 
-    public Member(int age, String name, boolean isContestSwimmer, boolean isPassive){
-        this.age = age;
-        this.name = name;
-        if(age < 18) this.isJunior = true;
-        this.isContestSwimmer = isContestSwimmer;
-        this.isPassive = isPassive;
+    public Member(){
+
     }
 
-
-
-    public boolean isJunior(){
-        return isJunior;
+    public Member(int birthYear, String fName, String lName){
+        setBirthYear(birthYear);
+        setfName(fName);
+        setlName(lName);
     }
 
-    public int getAge() {
-        return age;
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 
-    public boolean isContestSwimmer() {
-        return isContestSwimmer;
+    public int getBirthYear() {
+        return birthYear;
     }
 
-    public boolean isPassive() {
-        return isPassive;
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "age=" + age +
-                ", isJunior=" + isJunior +
-                ", name='" + name + '\'' +
-                ", isContestSwimmer=" + isContestSwimmer +
-                ", isPassive=" + isPassive +
-                '}';
+    public String getfName() {
+        return fName;
+    }
+
+    public void setlName(String lName) {
+        this.lName = lName;
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public void setDiscipline(String discipline) {
+        this.discipline = discipline;
+    }
+
+    public String getDiscipline() {
+        return discipline;
+    }
+
+    public void setMembershipStatus(String membershipStatus) {
+        this.membershipStatus = membershipStatus;
+    }
+
+    public String getMembershipStatus() {
+        return membershipStatus;
+    }
+
+    public void setPersonalRecord(double personalRecord) {
+        this.personalRecord = personalRecord;
+    }
+
+    public double getPersonalRecord() {
+        return personalRecord;
     }
 }
