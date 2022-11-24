@@ -39,7 +39,7 @@ public class Ui {
         boolean validChoice = false;
         int number =-1;
         while(!validChoice){
-            print(msg);
+            println(msg);
             if(in.hasNextInt()){
                 number = in.nextInt();
                 validChoice = true;

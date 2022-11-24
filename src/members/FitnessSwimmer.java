@@ -8,6 +8,9 @@ public class FitnessSwimmer extends Member {
         setlName(lName);
 
     }
-
+    @Override
+    public String toString() {
+        return getfName() + "\n" + getlName() + "\n" + getBirthYear();
+    }
 
 }
