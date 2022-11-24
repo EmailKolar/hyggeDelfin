@@ -1,5 +1,6 @@
 
 
+import members.CompSwimmer;
 import members.FitnessSwimmer;
 import members.Member;
 import members.PassiveMember;
@@ -14,6 +15,7 @@ import java.util.Scanner;
 public class Main {
     private final String PASSIVE_MEMBERS_FILENAME = "passivemembers.txt";
     private final String FITNESS_SWIMMERS_FILENAME = "fitnessswimmmers.txt";
+    private final String COMP_SWIMMERS_FILENAME = "compswimmmers.txt";
 
     private ArrayList<Member> passiveMembers = new ArrayList<>();
     private ArrayList<Member> compSwimmmers = new ArrayList<>();
@@ -39,17 +41,44 @@ public class Main {
         while (!valid){
             choice = ui.readInt();
             if (choice == 1){
-                ui.readInt("MOTIONIST ELLER KONKURRENCESVØMMER? " +
+                int choice2 = ui.readInt("MOTIONIST ELLER KONKURRENCESVØMMER? " +
                         "TAST 1 FOR MOTIONIST ELLER TAST 2 FOR KONKURRENCESVØMMER");
-
+                if (choice2 == 1){
+                    registerFitnessSwimmer();
+                    valid = true;
+                } else if (choice2 == 2) {
+                    //registercompswimmer
+                    valid = true;
+                }
             } else if (choice == 2) {
                 registerPassiveMember();
                 valid = true;
             }
         }
 
-
     }
+
+    public void registerCompSwimmer(){
+        int yr = -1;
+        String fName;
+        String lName;
+        String discipline = "";
+
+
+        yr = ui.readInt("SKRIV FOEDSELSAAR: ");
+        ui.println("SKRIV FORNAVN");
+        fName = ui.readString();
+        ui.println("SKRIV EFTERNAVN");
+        lName = ui.readString();
+        ui.println("SKRIV DISCIPLIN");
+        discipline = ui.readString();
+
+
+        CompSwimmer c = new CompSwimmer(yr, fName, lName, discipline);
+        compSwimmmers.add(c);
+        saveFile(compSwimmmers,COMP_SWIMMERS_FILENAME);
+    }
+
 
     public void registerFitnessSwimmer(){
         int yr = -1;

@@ -10,7 +10,7 @@ public class CompSwimmer extends Member {
         setfName(fName);
         setlName(lName);
         setDiscipline(discipline);
-
+        setPersonalRecord(0);
     }
 
 

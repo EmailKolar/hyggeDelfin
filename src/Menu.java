@@ -10,6 +10,11 @@ public class Menu {
         this.leadText = leadText;
         this.menuItems = menuItems;
     }
+    public Menu(String leadText){
+
+        this.leadText = leadText;
+
+    }
 
     public void printMenu(){
         String printString = menuHeader + "\n";
