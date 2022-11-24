@@ -13,6 +13,8 @@ public class PassiveMember extends Member{
     }
 
 
-
-
+    @Override
+    public String toString() {
+        return getfName() + " " + getlName() + " " + getBirthYear();
+    }
 }
