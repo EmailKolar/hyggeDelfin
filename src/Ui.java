@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class uI {
+public class Ui {
 
     Scanner in = new Scanner(System.in);
 
