@@ -22,11 +22,34 @@ public class Ui {
     }
 
     public int readInt(){
-        int number = in.nextInt();
+        boolean validChoice = false;
+        int number =-1;
+        while(!validChoice){
+            if(in.hasNextInt()){
+                number = in.nextInt();
+                validChoice = true;
+            }else{
+                in.nextLine();
+            }
+        }
         in.nextLine();//scanner bug
         return number;
     }
-
+    public int readInt(String msg){
+        boolean validChoice = false;
+        int number =-1;
+        while(!validChoice){
+            print(msg);
+            if(in.hasNextInt()){
+                number = in.nextInt();
+                validChoice = true;
+            }else{
+                in.nextLine();
+            }
+        }
+        in.nextLine();//scanner bug
+        return number;
+    }
 
 
 }
