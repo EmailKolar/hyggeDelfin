@@ -30,8 +30,10 @@ public class Main {
     Main(){
         passiveMembers = new ArrayList<>();
         fitnessSwimmers = new ArrayList<>();
+        compSwimmmers = new ArrayList<>();
         readBasicMembers(passiveMembers,PASSIVE_MEMBERS_FILENAME,1);
         readBasicMembers(fitnessSwimmers,FITNESS_SWIMMERS_FILENAME,2);
+        readBasicMembers(compSwimmmers,COMP_SWIMMERS_FILENAME,3);
     }
 
     public void registerMember(){
