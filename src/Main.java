@@ -30,8 +30,8 @@ public class Main {
     Main(){
         passiveMembers = new ArrayList<>();
         fitnessSwimmers = new ArrayList<>();
-        readBasicMembers(passiveMembers,PASSIVE_MEMBERS_FILENAME);
-        readBasicMembers(fitnessSwimmers,FITNESS_SWIMMERS_FILENAME);
+        readBasicMembers(passiveMembers,PASSIVE_MEMBERS_FILENAME,1);
+        readBasicMembers(fitnessSwimmers,FITNESS_SWIMMERS_FILENAME,2);
     }
 
     public void registerMember(){
@@ -44,25 +44,24 @@ public class Main {
                 int choice2 = ui.readInt("MOTIONIST ELLER KONKURRENCESVØMMER? " +
                         "TAST 1 FOR MOTIONIST ELLER TAST 2 FOR KONKURRENCESVØMMER");
                 if (choice2 == 1){
-                    registerFitnessSwimmer();
+                    registerInfo(2);
                     valid = true;
                 } else if (choice2 == 2) {
-                    //registercompswimmer
+                    registerInfo(3);
                     valid = true;
                 }
             } else if (choice == 2) {
-                registerPassiveMember();
+                registerInfo(1);
                 valid = true;
             }
         }
 
     }
 
-    public void registerCompSwimmer(){
+    public void registerInfo(int choice){
         int yr = -1;
         String fName;
         String lName;
-        String discipline = "";
 
 
         yr = ui.readInt("SKRIV FOEDSELSAAR: ");
@@ -70,6 +69,17 @@ public class Main {
         fName = ui.readString();
         ui.println("SKRIV EFTERNAVN");
         lName = ui.readString();
+        switch (choice){
+            case 1-> registerPassiveMember(yr,fName,lName);
+            case 2 -> registerFitnessSwimmer(yr,fName,lName);
+            case 3 -> registerCompSwimmer(yr,fName,lName);
+        }
+
+
+    }
+
+    public void registerCompSwimmer(int yr, String fName, String lName){
+        String discipline;
         ui.println("SKRIV DISCIPLIN");
         discipline = ui.readString();
 
@@ -80,17 +90,7 @@ public class Main {
     }
 
 
-    public void registerFitnessSwimmer(){
-        int yr = -1;
-        String fName;
-        String lName;
-
-
-        yr = ui.readInt("SKRIV FOEDSELSAAR: ");
-        ui.println("SKRIV FORNAVN");
-        fName = ui.readString();
-        ui.println("SKRIV EFTERNAVN");
-        lName = ui.readString();
+    public void registerFitnessSwimmer(int yr, String fName, String lName){
 
         FitnessSwimmer f = new FitnessSwimmer(yr, fName, lName);
         fitnessSwimmers.add(f);
@@ -98,17 +98,7 @@ public class Main {
     }
 
 
-    public void registerPassiveMember(){
-        int yr = -1;
-        String fName;
-        String lName;
-
-
-        yr = ui.readInt("SKRIV FOEDSELSAAR: ");
-        ui.println("SKRIV FORNAVN");
-        fName = ui.readString();
-        ui.println("SKRIV EFTERNAVN");
-        lName = ui.readString();
+    public void registerPassiveMember(int yr, String fName, String lName){
 
         PassiveMember p = new PassiveMember(yr, fName, lName);
         passiveMembers.add(p);
@@ -127,7 +117,7 @@ public class Main {
             System.out.println("I/O exception: " + e.getMessage());
         }
     }
-    public void readBasicMembers(ArrayList<Member> listName, String filename){
+    public void readBasicMembers(ArrayList<Member> listName, String filename, int choice){
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(new File(filename));
@@ -140,8 +130,25 @@ public class Main {
             String lName = fileScanner.nextLine();
             int yr = Integer.parseInt(fileScanner.nextLine());
 
-            PassiveMember p = new PassiveMember(yr, fName, lName);
-            listName.add(p);
+            if(choice == 3){
+                String discipline = fileScanner.nextLine();
+                int pr = Integer.parseInt(fileScanner.nextLine());
+
+                CompSwimmer c = new CompSwimmer(yr,fName,lName,discipline,pr);
+                compSwimmmers.add(c);
+
+            }
+
+            if(choice == 1){
+                PassiveMember p = new PassiveMember(yr, fName, lName);
+                listName.add(p);
+
+            } else if (choice == 2) {
+                FitnessSwimmer f = new FitnessSwimmer(yr,fName, lName);
+                listName.add(f);
+
+            }
+
         }
         fileScanner.close();
     }
