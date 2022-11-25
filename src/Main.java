@@ -134,7 +134,7 @@ public class Main {
 
             if(choice == 3){
                 String discipline = fileScanner.nextLine();
-                int pr = Integer.parseInt(fileScanner.nextLine());
+                double pr = Double.parseDouble(fileScanner.nextLine());
 
                 CompSwimmer c = new CompSwimmer(yr,fName,lName,discipline,pr);
                 compSwimmmers.add(c);

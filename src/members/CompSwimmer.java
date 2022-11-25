@@ -12,7 +12,7 @@ public class CompSwimmer extends Member {
         setDiscipline(discipline);
         setPersonalRecord(0);
     }
-    public CompSwimmer(int birthYear, String fName, String lName, String discipline, int personalRecord) {
+    public CompSwimmer(int birthYear, String fName, String lName, String discipline, double personalRecord) {
         setBirthYear(birthYear);
         setfName(fName);
         setlName(lName);
@@ -21,4 +21,8 @@ public class CompSwimmer extends Member {
     }
 
 
+    @Override
+    public String toString() {
+        return getfName() + "\n" + getlName() + "\n" + getBirthYear() + "\n" + getDiscipline() + "\n" + getPersonalRecord();
+    }
 }
