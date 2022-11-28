@@ -22,8 +22,11 @@ public class Main {
 //        m1.readChoice();
 
         Chairman c = new Chairman();
+        Trainer t = new Trainer();
 
-        c.registerMember();
+        t.registerTime();
+
+//        c.registerMember();
 
 
 

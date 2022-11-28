@@ -12,30 +12,34 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Chairman {
+public class Chairman extends Staff {
 
 
     Chairman(){
         passiveMembers = new ArrayList<>();
         fitnessSwimmers = new ArrayList<>();
         compSwimmmers = new ArrayList<>();
-        readBasicMembers(passiveMembers,PASSIVE_MEMBERS_FILENAME,1);
-        readBasicMembers(fitnessSwimmers,FITNESS_SWIMMERS_FILENAME,2);
-        readBasicMembers(compSwimmmers,COMP_SWIMMERS_FILENAME,3);
+        readMembers(passiveMembers,PASSIVE_MEMBERS_FILENAME,1);
+        readMembers(fitnessSwimmers,FITNESS_SWIMMERS_FILENAME,2);
+        readMembers(compSwimmmers,COMP_SWIMMERS_FILENAME,3);
     }
-
+    public ArrayList<Member> getCompSwimmers(){
+        return compSwimmmers;
+    }
 
     private final String PASSIVE_MEMBERS_FILENAME = "passivemembers.txt";
     private final String FITNESS_SWIMMERS_FILENAME = "fitnessswimmmers.txt";
     private final String COMP_SWIMMERS_FILENAME = "compswimmmers.txt";
 
     private ArrayList<Member> passiveMembers = new ArrayList<>();
-    private ArrayList<Member> compSwimmmers = new ArrayList<>();
+    public ArrayList<Member> compSwimmmers = new ArrayList<>();
     private ArrayList<Member> fitnessSwimmers = new ArrayList<>();
 
 
     Scanner in = new Scanner(System.in);
     Ui ui = new Ui();
+
+
 
 
     public void registerMember(){
@@ -121,7 +125,7 @@ public class Chairman {
             System.out.println("I/O exception: " + e.getMessage());
         }
     }
-    public void readBasicMembers(ArrayList<Member> listName, String filename, int choice){
+    public void readMembers(ArrayList<Member> listName, String filename, int choice){
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(new File(filename));
